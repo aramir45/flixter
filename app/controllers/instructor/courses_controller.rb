@@ -22,7 +22,9 @@ class Instructor::CoursesController < ApplicationController
 
   def require_authorized_for_current_course
     if current_course.user != current_user
-      render plain: "Unauthorized", status: :unthorized
+      render plain: "Unauthorized", status: :unauthorized
+    end
+  end
 
   helper_method :current_course
   def current_course
