@@ -51,17 +51,25 @@
   <div class="col-sm-8 col-12">
     <% @course.sections.each do |section| %>
       <div class="section">
+        <h3>
+          <%= section.title %>
+        </h3>
+        <div class="row">
         <%= section.title %>
         <% section.lessons.each do |lesson| %>
-        <div class="lesson">
+        <div class="col-12 col-sm-6">
+        <div class="lesson text-center">
           <%= lin_to lesson_path(lesson) do %>
           <b><%= lesson.title %></b>
-          -
+          <br />
           <%= lessson.subtitle %>
           <% end %>
         </div>
-        <% end %>
       </div>
+    <% end %>
+  </div>
+  <br class="clr" />
+</div>
       <% end %>
   </div>
  </div>
