@@ -1,6 +1,14 @@
 class Instructor::LessonsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_authorized_for_current_section
+  before_action :authenticate_current_user!
+
+
+  def current_user
+    if current_user_signed_in?
+      redirect_to root_url, alert: 'Error Message Here'
+    end
+  end
 
 
   def new
