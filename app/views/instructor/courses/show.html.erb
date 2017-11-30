@@ -54,14 +54,16 @@
           <%= section.title %>
         </h3>
         <div class="row">
-          <% section.lessons.each do |lesson| %>
+          <% section.lessons.rank(:row_order).each do |lesson| %>
             <div class="col-12 col-sm-6">
               <div class="lesson text-center">
                 <br />
-                <%= link_to lesson_path(lesson) do %>
+                <%= section.lessons.rank(:row_order).each do |lesson| %>
+                <li>
                   <b><%= lesson.title %></b>
-                  <br />
+                  -
                   <%= lesson.subtitle %>
+                </li>
                 <% end %>
               </div>
             </div>
