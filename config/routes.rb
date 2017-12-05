@@ -4,17 +4,15 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   resources :courses, only: [:index, :show] do
     resources :enrollments, only: :create
-    resources :course_id, only: [:row_order_position] 
   end
   resources :lessons, only: [:show]
   namespace :instructor do
     resources :lessons, only: [:update]
-    resources :sections, only: [] do
-      resources :lessons, only: [:new, :create]
+    resources :sections, only: [:update] do
+      resources :lessons, only: [:create]
     end
-      resources :courses, only: [:new, :create, :show] do
-        resources :sections, only: [:create]
+    resources :courses, only: [:new, :create, :show] do
+      resources :sections, only: [:create]
     end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
